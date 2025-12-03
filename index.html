@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khadka Kirana Pasal - Your Trusted Grocery Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="smooth-scroll bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-store text-green-600 text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Khadka Kirana Pasal</h1>
+                        <p class="text-xs text-gray-600">Your Trusted Grocery Store</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="text-gray-700 hover:text-green-600 transition">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-green-600 transition">About</a>
+                    <a href="#products" class="text-gray-700 hover:text-green-600 transition">Products</a>
+                    <a href="#services" class="text-gray-700 hover:text-green-600 transition">Services</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-600 transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="relative">
+                        <i class="fas fa-shopping-cart text-2xl text-green-600"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-badge">0</span>
+                    </a>
+                    <div id="userSection">
+                        <a href="auth.html" class="text-gray-700 hover:text-green-600">
+                            <i class="fas fa-user text-2xl"></i>
+                        </a>
+                    </div>
+                    <button onclick="toggleMenu()" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-green-600">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-green-600">About</a>
+                <a href="#products" class="block py-2 text-gray-700 hover:text-green-600">Products</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-green-600">Services</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-green-600">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern bg-gradient-to-r from-green-50 to-green-100 py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Welcome to Khadka Kirana Pasal</h2>
+                    <p class="text-xl text-gray-600 mb-6">Fresh groceries, everyday essentials, and more - all at your doorstep!</p>
+                    <div class="flex space-x-4">
+                        <a href="#products" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">Shop Now</a>
+                        <a href="#contact" class="bg-white text-green-600 px-6 py-3 rounded-lg border-2 border-green-600 hover:bg-green-50 transition">Contact Us</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=600" alt="Grocery Store" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search products..." class="w-full px-4 py-3 pl-12 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600">
+                    <i class="fas fa-search absolute left-4 top-4 text-green-600 text-xl"></i>
+                </div>
+                <div id="searchResults" class="hidden mt-4 bg-white border rounded-lg shadow-lg max-h-96 overflow-y-auto"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">About Us</h2>
+            
+            <!-- Story Section -->
+            <div class="max-w-4xl mx-auto mb-12 text-center">
+                <p class="text-lg text-gray-700 mb-4">
+                    Welcome to <span class="font-semibold text-green-600">Khadka Kirana Pasal</span>, your trusted neighborhood grocery store that has been serving the community with dedication and care. We take pride in being more than just a store – we're your reliable partner in daily living.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    Established with a vision to provide quality products at affordable prices, we have grown to become a household name in the locality. Our commitment to freshness, variety, and customer satisfaction sets us apart from the rest.
+                </p>
+                <p class="text-gray-600">
+                    From fresh vegetables and fruits to daily essentials, personal care products, stationery, and household items – we stock everything you need under one roof. With over 191 carefully selected products across 18+ categories, we ensure you never have to go elsewhere for your daily needs.
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-white rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Open Daily</h3>
+                    <p class="text-gray-600 mb-2">7 AM - 9 PM, 7 days a week</p>
+                    <p class="text-sm text-gray-500">We're always here when you need us, including weekends and holidays</p>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-white rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fresh Products</h3>
+                    <p class="text-gray-600 mb-2">Quality guaranteed fresh items</p>
+                    <p class="text-sm text-gray-500">Daily fresh stock of vegetables, fruits, dairy, and bakery products</p>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-white rounded-lg shadow-md hover:shadow-xl transition">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tags text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Best Prices</h3>
+                    <p class="text-gray-600 mb-2">Competitive pricing always</p>
+                    <p class="text-sm text-gray-500">Regular discounts and special offers on various products</p>
+                </div>
+            </div>
+
+            <!-- Additional Features -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center p-4">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-users text-2xl text-blue-600"></i>
+                    </div>
+                    <h4 class="font-semibold mb-1">Friendly Staff</h4>
+                    <p class="text-sm text-gray-600">Helpful and courteous service</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-box text-2xl text-purple-600"></i>
+                    </div>
+                    <h4 class="font-semibold mb-1">Wide Variety</h4>
+                    <p class="text-sm text-gray-600">191+ products in stock</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-shield-alt text-2xl text-yellow-600"></i>
+                    </div>
+                    <h4 class="font-semibold mb-1">Trusted Quality</h4>
+                    <p class="text-sm text-gray-600">Authentic brands only</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-heart text-2xl text-red-600"></i>
+                    </div>
+                    <h4 class="font-semibold mb-1">Community First</h4>
+                    <p class="text-sm text-gray-600">Serving with care</p>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="mt-12 bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-lg">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Why Choose Khadka Kirana Pasal?</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Comprehensive Product Range</h4>
+                            <p class="text-sm text-gray-600">From groceries to stationery, personal care to cleaning supplies – find everything you need in one place</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Local & Authentic Products</h4>
+                            <p class="text-sm text-gray-600">We stock traditional Nepali items alongside international brands</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Hygiene & Safety</h4>
+                            <p class="text-sm text-gray-600">Clean, organized store with proper storage and handling of all products</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Easy Shopping Experience</h4>
+                            <p class="text-sm text-gray-600">Quick billing, multiple payment options, and home delivery available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Our Products</h2>
+            <p class="text-center text-gray-600 mb-12">Browse our wide selection of quality products</p>
+            
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterProducts('all')" class="filter-btn bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition">All</button>
+                <button onclick="filterProducts('vegetables')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Vegetables</button>
+                <button onclick="filterProducts('fruits')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Fruits</button>
+                <button onclick="filterProducts('dairy')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Dairy & Eggs</button>
+                <button onclick="filterProducts('grains')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Grains</button>
+                <button onclick="filterProducts('spices')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Spices</button>
+                <button onclick="filterProducts('snacks')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Snacks</button>
+                <button onclick="filterProducts('noodles')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Noodles</button>
+                <button onclick="filterProducts('beverages')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Beverages</button>
+                <button onclick="filterProducts('oils')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Oils</button>
+                <button onclick="filterProducts('personal-care')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Personal Care</button>
+                <button onclick="filterProducts('cleaning')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Cleaning</button>
+                <button onclick="filterProducts('tobacco')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Tobacco</button>
+                <button onclick="filterProducts('stationery')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Stationery</button>
+                <button onclick="filterProducts('health')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Health</button>
+                <button onclick="filterProducts('candies')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Candies</button>
+                <button onclick="filterProducts('chocolates')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Chocolates</button>
+                <button onclick="filterProducts('biscuits')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Biscuits</button>
+                <button onclick="filterProducts('incense')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Incense</button>
+                <button onclick="filterProducts('tea')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">Tea</button>
+                <button onclick="filterProducts('general')" class="filter-btn bg-white text-gray-700 px-6 py-2 rounded-full hover:bg-green-600 hover:text-white transition">General</button>
+            </div>
+            
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <i class="fas fa-truck text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Home Delivery</h3>
+                    <p class="text-gray-600">Fast and reliable delivery to your doorstep</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <i class="fas fa-phone text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Phone Orders</h3>
+                    <p class="text-gray-600">Order via phone call for quick service</p>
+                </div>
+                <div class="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <i class="fas fa-credit-card text-4xl text-yellow-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Multiple Payment</h3>
+                    <p class="text-gray-600">Cash, card, and digital wallet accepted</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
+                    <i class="fas fa-undo text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Easy Returns</h3>
+                    <p class="text-gray-600">Hassle-free return policy on all products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contact Us</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt text-green-600 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold">Address</h4>
+                                <p class="text-gray-600">Kathmandu, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-phone text-green-600 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600">+977-1234567890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-envelope text-green-600 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">info@khadkakiranapasal.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-clock text-green-600 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold">Hours</h4>
+                                <p class="text-gray-600">7:00 AM - 9:00 PM (Daily)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contactForm" class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Khadka Kirana Pasal</h3>
+                    <p class="text-gray-400">Your trusted neighborhood grocery store serving quality products since years.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Khadka Kirana Pasal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Review Modal -->
+    <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center">
+                <h3 id="modalProductName" class="text-2xl font-bold"></h3>
+                <button onclick="closeProductModal()" class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="p-6">
+                <!-- Rating Summary -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <div class="flex items-center space-x-6">
+                        <div class="text-center">
+                            <div id="modalAvgRating" class="text-4xl font-bold text-gray-800"></div>
+                            <div id="modalStars" class="text-yellow-500 text-2xl my-2"></div>
+                            <div id="modalRatingCount" class="text-sm text-gray-600"></div>
+                        </div>
+                        <div class="flex-1">
+                            <div id="ratingBars"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Review Form -->
+                <div id="addReviewSection" class="bg-blue-50 rounded-lg p-6 mb-6">
+                    <h4 class="font-bold text-lg mb-4">Write a Review</h4>
+                    <form onsubmit="submitReview(event)">
+                        <input type="hidden" id="reviewProductId">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-semibold mb-2">Your Rating</label>
+                            <div class="flex space-x-2">
+                                <button type="button" onclick="setRating(1)" class="rating-star text-3xl text-gray-300 hover:text-yellow-500">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button type="button" onclick="setRating(2)" class="rating-star text-3xl text-gray-300 hover:text-yellow-500">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button type="button" onclick="setRating(3)" class="rating-star text-3xl text-gray-300 hover:text-yellow-500">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button type="button" onclick="setRating(4)" class="rating-star text-3xl text-gray-300 hover:text-yellow-500">
+                                    <i class="far fa-star"></i>
+                                </button>
+                                <button type="button" onclick="setRating(5)" class="rating-star text-3xl text-gray-300 hover:text-yellow-500">
+                                    <i class="far fa-star"></i>
+                                </button>
+                            </div>
+                            <input type="hidden" id="selectedRating" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-semibold mb-2">Your Review</label>
+                            <textarea id="reviewComment" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Reviews List -->
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Customer Reviews</h4>
+                    <div id="reviewsList" class="space-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Required Overlay -->
+    <div id="loginOverlay" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative">
+            <div class="text-center mb-6">
+                <i class="fas fa-lock text-green-600 text-5xl mb-4"></i>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Login Required</h2>
+                <p class="text-gray-600 mb-4">Please login or register to access Khadka Kirana Pasal and start shopping!</p>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg p-4 mb-6">
+                <h3 class="font-semibold text-green-800 mb-2">Why Create an Account?</h3>
+                <ul class="text-sm text-gray-700 space-y-2">
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Access 191+ quality products</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Track your order history</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Save delivery addresses</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Rate and review products</li>
+                    <li><i class="fas fa-check text-green-600 mr-2"></i>Fast and secure checkout</li>
+                </ul>
+            </div>
+            
+            <a href="auth.html" class="block w-full bg-green-600 text-white text-center py-3 rounded-lg hover:bg-green-700 transition font-semibold mb-3">
+                <i class="fas fa-sign-in-alt mr-2"></i>Login / Register Now
+            </a>
+            
+            <div class="text-center text-sm text-gray-500">
+                <p>Demo Accounts Available:</p>
+                <p class="text-xs mt-1">Customer: user@test.com / user123</p>
+                <p class="text-xs">Admin: admin@khadka.com / admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in on page load
+        (function() {
+            // Wait for auth.js to fully load
+            if (typeof isLoggedIn !== 'undefined' && !isLoggedIn()) {
+                // Show login overlay instead of redirecting
+                document.getElementById('loginOverlay').classList.remove('hidden');
+                // Prevent scrolling
+                document.body.style.overflow = 'hidden';
+            }
+        })();
+    </script>
+</body>
+</html>

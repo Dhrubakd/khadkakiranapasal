@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Khadka Kirana Pasal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="smooth-scroll bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-store text-green-600 text-3xl"></i>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Khadka Kirana Pasal</h1>
+                        <p class="text-xs text-gray-600">Your Trusted Grocery Store</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-700 hover:text-green-600 transition">Home</a>
+                    <a href="index.html#about" class="text-gray-700 hover:text-green-600 transition">About</a>
+                    <a href="index.html#products" class="text-gray-700 hover:text-green-600 transition">Products</a>
+                    <a href="index.html#services" class="text-gray-700 hover:text-green-600 transition">Services</a>
+                    <a href="index.html#contact" class="text-gray-700 hover:text-green-600 transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="relative">
+                        <i class="fas fa-shopping-cart text-2xl text-green-600"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                    <div id="userSection">
+                        <a href="auth.html" class="text-gray-700 hover:text-green-600">
+                            <i class="fas fa-user text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="py-16 min-h-screen">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold text-gray-800 mb-8">Shopping Cart</h1>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2">
+                    <div id="cartItemsContainer" class="bg-white rounded-lg shadow-md p-6">
+                        <!-- Cart items will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                        <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between text-gray-600">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">Rs. 0</span>
+                            </div>
+                            <div class="flex justify-between text-gray-600">
+                                <span>Delivery Fee:</span>
+                                <span id="deliveryFee">Rs. 50</span>
+                            </div>
+                            <div class="border-t pt-3">
+                                <div class="flex justify-between text-xl font-bold">
+                                    <span>Total:</span>
+                                    <span id="totalAmount" class="text-green-600">Rs. 0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="proceedToCheckout()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition mb-3">
+                            <i class="fas fa-check-circle mr-2"></i>Proceed to Checkout
+                        </button>
+                        
+                        <a href="index.html#products" class="block text-center text-green-600 hover:text-green-700 transition">
+                            <i class="fas fa-arrow-left mr-2"></i>Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Khadka Kirana Pasal</h3>
+                    <p class="text-gray-400">Your trusted neighborhood grocery store serving quality products since years.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="index.html#products" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Khadka Kirana Pasal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+    <script>
+        // Check authentication immediately
+        (function() {
+            if (typeof isLoggedIn !== 'undefined' && !isLoggedIn()) {
+                alert('Please login to access your cart.');
+                window.location.replace('auth.html');
+            }
+        })();
+        
+        // Update user section on cart page
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof updateUserSection === 'function') {
+                updateUserSection();
+            }
+        });
+    </script>
+</body>
+</html>
