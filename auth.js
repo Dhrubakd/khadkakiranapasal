@@ -1,4 +1,14 @@
-// Authentication System
+/**
+ * ======================================
+ * Khadka Kirana Pasal - Authentication
+ * ======================================
+ * User login, registration, and session
+ * management functionality
+ */
+
+// ============================================
+// USER INITIALIZATION
+// ============================================
 
 // Initialize demo users
 function initializeDemoUsers() {

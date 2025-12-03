@@ -1,4 +1,14 @@
-// Cart functionality for cart.html page
+/**
+ * ======================================
+ * Khadka Kirana Pasal - Shopping Cart
+ * ======================================
+ * Shopping cart display and checkout
+ * functionality
+ */
+
+// ============================================
+// CART DISPLAY & MANAGEMENT
+// ============================================
 
 // Load cart from localStorage
 function loadCart() {

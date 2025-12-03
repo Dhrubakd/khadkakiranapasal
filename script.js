@@ -1,4 +1,14 @@
-// Products Data
+/**
+ * ======================================
+ * Khadka Kirana Pasal - Main Script
+ * ======================================
+ * Main product data and functionality
+ * for the grocery store website
+ */
+
+// ============================================
+// PRODUCTS DATA
+// ============================================
 const products = [
     // Vegetables
     { id: 1, name: 'Tomato', category: 'vegetables', price: 80, unit: 'kg', image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300' },
@@ -251,7 +261,14 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCart();
 });
 
-// Display Products
+// ============================================
+// DISPLAY FUNCTIONS
+// ============================================
+
+/**
+ * Display products filtered by category
+ * @param {string} category - Category to filter ('all' or specific category)
+ */
 function displayProducts(category) {
     const grid = document.getElementById('productsGrid');
     const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
@@ -301,7 +318,14 @@ function generateStars(rating) {
     return stars;
 }
 
-// Filter Products
+// ============================================
+// FILTER & SEARCH FUNCTIONS
+// ============================================
+
+/**
+ * Filter products by category
+ * @param {string} category - Category to filter by
+ */
 function filterProducts(category) {
     displayProducts(category);
     // Update active filter button

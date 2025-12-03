@@ -1,4 +1,14 @@
-// Admin Panel Functionality
+/**
+ * ======================================
+ * Khadka Kirana Pasal - Admin Panel
+ * ======================================
+ * Admin dashboard, product, order, and
+ * customer management functionality
+ */
+
+// ============================================
+// ADMIN AUTHENTICATION
+// ============================================
 
 // Check if we're on the admin page
 if (window.location.pathname.includes('admin.html')) {

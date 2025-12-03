@@ -1,4 +1,14 @@
-// Profile Page Functionality
+/**
+ * ======================================
+ * Khadka Kirana Pasal - User Profile
+ * ======================================
+ * User account, orders, and address
+ * management functionality
+ */
+
+// ============================================
+// AUTHENTICATION CHECK
+// ============================================
 
 // Check authentication
 if (!isLoggedIn()) {
