@@ -257,8 +257,9 @@ let cart = [];
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    displayProducts('all');
+    displayProducts('vegetables');
     loadCart();
+    updateActiveNavLink();
 });
 
 // ============================================
@@ -374,6 +375,32 @@ function updateCart() {
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
+}
+
+// Update Active Navigation Link
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('header nav a[href^="#"]');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('text-green-600', 'border-b-2', 'border-green-600');
+            link.classList.add('text-gray-700');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.remove('text-gray-700');
+                link.classList.add('text-green-600', 'border-b-2', 'border-green-600');
+            }
+        });
+    });
 }
 
 // Save Cart to LocalStorage
